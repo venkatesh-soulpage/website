@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <title>Treasure Gram</title>
+  <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <body>
+    <nav class="navbar navbar-default navbar-static-top text-center">
+      <a href="/"><img src="{%static 'images/logo.png'%}" /></a>
+      {% if user.is_authenticated %}
+      <a
+        class="navbar-text navbar-right"
+        href="{%url 'profile' user.username %}"
+        >{{user.username}}</a
+      >
+      <a class="navbar-text navbar-right" href="{%url 'logout'%}">logout</a>
+      {%else%}
+      <a class="navbar-text navbar-right" href="{%url 'login' %}">login</a>
+      {%endif%}
+    </nav>
+    <main class="conatiner conatiner--mw700">
+      {%block content%} {%endblock%}
+    </main>
+    <footer class="footer text-center">
+      <img src="{%static 'images/brand-icon.png'%}" height="30px" />treasure
+      gram
+      <img src="{%static 'images/brand-icon.png'%}" height="30px" />
+    </footer>
+    <script
+      type="text/javascript"
+      src='{%static "js/jquery-3.0.0.min.js" %}'
+    ></script>
+    <script type="text/javascript" src='{%static "js/main.js" %}'></script>
+  </body>
+</html>
